@@ -6,13 +6,14 @@ const stripe = require('stripe')('sk_test_51Ql16dAgLF2qD5NrppdWyqILJctHV7ejPJOiv
 const app = express();
 
 const corsOptions = {
-  origin: 'https://guccijenkins.github.io/public',
+  origin: 'https://guccijenkins.github.io',
   methods: ['GET', 'POST'],
   credentials: true,
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // FIXED: Handle preflight requests
 
 app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
