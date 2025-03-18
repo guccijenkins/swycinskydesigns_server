@@ -16,8 +16,6 @@ app.use(cors(corsOptions));
 
 app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
-app.use(express.static('public'));
-
 
 app.post('/create-checkout-session', async (req, res) => {
 
