@@ -6,7 +6,7 @@ const stripe = require('stripe')('sk_test_51Ql16dAgLF2qD5NrppdWyqILJctHV7ejPJOiv
 const app = express();
 
 const corsOptions = {
-  origin: 'https://guccijenkins.github.io',
+  origin: 'https://guccijenkins.github.io/public',
   methods: ['GET', 'POST'],
   credentials: true,
   optionsSuccessStatus: 200
