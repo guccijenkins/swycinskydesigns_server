@@ -65,4 +65,8 @@ app.post('/create-checkout-session', async (req, res) => {
   res.json({ url: session.url });
 });
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 app.listen(4242, () => console.log('Running on port 4242'));
