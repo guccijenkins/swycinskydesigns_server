@@ -7,7 +7,7 @@ const app = express();
 
 app.use((req, res, next) => {
   console.log('Incoming request from:', req.headers.origin); // Log origin
-  res.setHeader('Access-Control-Allow-Origin', 'https://guccijenkins.github.io'); // Allow only your frontend
+  res.setHeader('Access-Control-Allow-Origin', 'https://guccijenkins.github.io/public'); // Allow only your frontend
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allowed methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allowed headers
   res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow credentials
