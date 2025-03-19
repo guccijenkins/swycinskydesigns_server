@@ -68,7 +68,7 @@ app.post('/create-checkout-session', async (req, res) => {
       price: priceId,
       quantity: 1,
       tax_rates: [taxRate.id],
-      shipping_options: [shipping_rate_date: shippingRate.id],
+      shipping_options: [{shipping_rate: shippingRate.id}],
       adjustable_quantity: {
         enabled: true,
         minimum: 1,
