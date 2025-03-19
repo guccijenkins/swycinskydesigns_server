@@ -28,7 +28,7 @@ app.options('*', cors(corsOptions)); // FIXED: Handle preflight requests
 app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
 
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/api/server', async (req, res) => {
 
 
     // Extract priceIds from the request body
@@ -72,4 +72,4 @@ app.post('/create-checkout-session', async (req, res) => {
   res.json({ url: session.url });
 });
 
-app.listen(4242, () => console.log('Running on port 4242'));
+
