@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.STRIPE_KEY_PK_LIVE);
+const shippingRate = 'shr_1R4QxSAgLF2qD5NrXRFj10h3'
 
 const app = express();
 
@@ -39,25 +40,6 @@ app.post('/create-checkout-session', async (req, res) => {
     
   });
 
-  const shippingRate = await stripe.shippingRates.create({
-  display_name: 'Ground shipping',
-  type: 'fixed_amount',
-  fixed_amount: {
-    amount: 500,
-    currency: 'usd',
-  },
-  delivery_estimate: {
-    minimum: {
-      unit: 'business_day',
-      value: 5,
-    },
-    maximum: {
-      unit: 'business_day',
-      value: 7,
-    },
-  },
-});
-
   const session = await stripe.checkout.sessions.create({
     billing_address_collection: 'auto',
     shipping_address_collection: {
@@ -68,7 +50,7 @@ app.post('/create-checkout-session', async (req, res) => {
       price: priceId,
       quantity: 1,
       tax_rates: [taxRate.id],
-      shipping_options: [{shipping_rate: shippingRate}],
+      shipping_options: shippingRate,
       adjustable_quantity: {
         enabled: true,
         minimum: 1,
