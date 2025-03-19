@@ -18,7 +18,7 @@ app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
 app.use(express.static('public'));
 
-const YOUR_DOMAIN = 'http://localhost:4242';
+const YOUR_DOMAIN = 'https://guccijenkins.github.io';
 
 app.post('/create-checkout-session', async (req, res) => {
 
