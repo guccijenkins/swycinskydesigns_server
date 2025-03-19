@@ -7,6 +7,7 @@ const app = express();
 
 const corsOptions = {
   origin: ['http://localhost:4242', 'null', 'https://guccijenkins.github.io'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST'],
   credentials: true,
   optionsSuccessStatus: 200
