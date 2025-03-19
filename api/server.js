@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.STRIPE_KEY_PK_LIVE);
-const shippingRate = 'shr_1R4QxSAgLF2qD5NrXRFj10h3'
+const shippingRate = (process.env.flatShippingRate);
 
 const app = express();
 
