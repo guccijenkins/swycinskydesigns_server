@@ -1,3 +1,4 @@
+
 // This is your test secret API key.
 const express = require('express');
 const cors = require('cors');
@@ -5,20 +6,27 @@ const stripe = require('stripe')('sk_test_51Ql16dAgLF2qD5NrppdWyqILJctHV7ejPJOiv
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log('Incoming request from:', req.headers.origin); // Log origin
+  res.setHeader('Access-Control-Allow-Origin', 'https://guccijenkins.github.io'); // Allow only your frontend
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allowed methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allowed headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow credentials
+  next();
+});
+
 const corsOptions = {
-  origin: ['http://localhost:4242', 'null', 'https://guccijenkins.github.io'],
+  origin: 'https://guccijenkins.github.io',
   methods: ['GET', 'POST'],
   credentials: true,
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // FIXED: Handle preflight requests
 
 app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
-app.use(express.static('public'));
-
-const YOUR_DOMAIN = 'http://localhost:4242';
 
 app.post('/create-checkout-session', async (req, res) => {
 
@@ -57,9 +65,8 @@ app.post('/create-checkout-session', async (req, res) => {
     })),
 
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/success.html`,
-    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-    
+    success_url: `https://guccijenkins.github.io/success.html`,
+    cancel_url: `https://guccijenkins.github.io/cancel.html`,
   });
 
   res.json({ url: session.url });
