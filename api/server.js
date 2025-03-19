@@ -39,6 +39,25 @@ app.post('/create-checkout-session', async (req, res) => {
     
   });
 
+  const shippingRate = await stripe.shippingRates.create({
+  display_name: 'Ground shipping',
+  type: 'fixed_amount',
+  fixed_amount: {
+    amount: 500,
+    currency: 'usd',
+  },
+  delivery_estimate: {
+    minimum: {
+      unit: 'business_day',
+      value: 5,
+    },
+    maximum: {
+      unit: 'business_day',
+      value: 7,
+    },
+  },
+});
+
   const session = await stripe.checkout.sessions.create({
     billing_address_collection: 'auto',
     shipping_address_collection: {
