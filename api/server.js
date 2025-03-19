@@ -1,7 +1,7 @@
-// This is your test secret API key.
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
-const stripe = require('stripe')('sk_test_51Ql16dAgLF2qD5NrppdWyqILJctHV7ejPJOivJNffp89IrVdc1D6k4LZVYpdoUh5oAAQMfs79Y66Ik4pJrtp9xCU00ZGkdmCYQ');
+const stripe = require('stripe')('STRIPE_KEY_SK_TEST');
 
 const app = express();
 
@@ -65,9 +65,5 @@ app.post('/create-checkout-session', async (req, res) => {
 
   res.json({ url: session.url });
 });
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
 app.listen(4242, () => console.log('Running on port 4242'));
