@@ -46,11 +46,16 @@ app.post('/create-checkout-session', async (req, res) => {
       allowed_countries: ['US', 'CA'],
     },
 
+     shipping_options: [
+        {
+          shipping_rate: shippingRate,
+        },
+      ],
+
     line_items: priceIds.map(priceId => ({
       price: priceId,
       quantity: 1,
       tax_rates: [taxRate.id],
-      shipping_options: shippingRate,
       adjustable_quantity: {
         enabled: true,
         minimum: 1,
