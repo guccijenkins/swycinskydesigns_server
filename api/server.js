@@ -86,7 +86,7 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send(shippingRate.id)
 })
 
 app.listen(4242, () => console.log('Running on port 4242'));
