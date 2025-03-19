@@ -72,4 +72,5 @@ app.post('/api/server', async (req, res) => {
   res.json({ url: session.url });
 });
 
+module.exports = app;
 
