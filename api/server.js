@@ -55,7 +55,7 @@ app.post('/create-checkout-session', async (req, res) => {
     line_items: priceIds.map(priceId => ({
       price: priceId,
       quantity: 1,
-      tax_rates: [taxRate.id],
+      // tax_rates: [taxRate.id],
       adjustable_quantity: {
         enabled: true,
         minimum: 1,
