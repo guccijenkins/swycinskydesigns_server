@@ -32,13 +32,13 @@ app.post('/create-checkout-session', async (req, res) => {
       return res.status(400).json({ error: 'No price IDs provided' });
     }
 
-  const taxRate = await stripe.taxRates.create({
-    display_name: 'US Sales Tax',
-    inclusive: false,
-    percentage: 7.25,
-    country: 'US',
+  // const taxRate = await stripe.taxRates.create({
+  //   display_name: 'US Sales Tax',
+  //   inclusive: false,
+  //   percentage: 7.25,
+  //   country: 'US',
     
-  });
+  // });
 
   const session = await stripe.checkout.sessions.create({
     billing_address_collection: 'auto',
